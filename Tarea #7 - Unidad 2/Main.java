@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-    Producto producto1 = new Producto("Pantalla",5622.99);
-    Producto producto2 = new Producto("Pantalla",5622.99, 5);
+    Producto producto1 = new Producto("Logitech G502 HERO Ratón Gaming", 35.10 );
+    Producto producto2 = new Producto("Corsair K55 RGB PRO XT Teclado",54.3, 2);
 
         System.out.println("Producto 1:" + "\nNombre: " + producto1.getNombre() + "\nPrecio: " + producto1.getPrecio() + "\nStock: " + producto1.getStock());
         System.out.println("\nProducto 2:" + "\nNombre: " + producto2.getNombre() + "\nPrecio: " + producto2.getPrecio() + "\nStock: " + producto2.getStock());
