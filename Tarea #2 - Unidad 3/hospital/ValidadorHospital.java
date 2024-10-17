@@ -1,70 +1,63 @@
 package hospital;
 
 import consultas.Consulta;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import usuarios.medicos.Medico;
 import usuarios.pacientes.Paciente;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-
 public class ValidadorHospital {
-    public boolean validarDisponibilidadEnFechaConsulta(LocalDateTime fecheDeseada, int numeroConsultorio, ArrayList<Consulta> listaConsultas) {
+
+    public boolean validarDisponibilidadEnFecha(
+            LocalDateTime fechaDeseada,
+            int numeroConsultorio,
+            ArrayList<Consulta> listaConsultas) {
+
         for (Consulta consulta : listaConsultas) {
-            if (consulta.getFechaHora().isEqual(fecheDeseada) && numeroConsultorio == consulta.getConsultorio().getNumeroConsultorio()) {
+            if (consulta.getFechaHora().isEqual(fechaDeseada) &&
+                    numeroConsultorio == consulta.getConsultorio().getNumeroConsultorio()) {
                 return false;
             }
         }
-
         return true;
     }
 
-    public boolean validarDisponibilidadMedico(LocalDateTime fechaDeseada, String idMedico, ArrayList<Consulta> listaConsultas) {
-        for (Consulta consulta : listaConsultas) {
-            if (consulta.getFechaHora().isEqual(fechaDeseada) && consulta.getMedico().getId().equals(idMedico)) {
+    public boolean validarDisponibilidadMedico(
+            LocalDateTime fechaDeseada,
+            String idMedico,
+            ArrayList<Consulta> listConsultas
+    ) {
+        for (Consulta consulta : listConsultas) {
+            if (consulta.getFechaHora().isEqual(fechaDeseada)
+                    && consulta.getMedico().getId().equals(idMedico)) {
                 return false;
             }
         }
-
         return true;
+
     }
 
-    public boolean validarFechaCorrecta(LocalDateTime fechaDeseada) {
-        LocalDateTime fechaActual = LocalDateTime.now();
+    public boolean validarFechaCorrecta(LocalDateTime fechaDeseda) {
 
-        if (fechaDeseada.isBefore(fechaActual)) {
-            return false;
-        }
-
-        return true;
+        return !fechaDeseda.isBefore(LocalDateTime.now());
     }
 
-    public boolean validarTelefonoPaciente(String telefono, ArrayList<Paciente> listaPacientes) {
+    public boolean validarTelefono(String telefonoDeseado, ArrayList<Paciente> listaPacientes) {
+
         for (Paciente paciente : listaPacientes) {
-            if (telefono.equals(paciente.getTelefono())) {
-                return false;
-            }
-        }
 
+            if (paciente.getTelefono().equals(telefonoDeseado)) return false;
+
+        }
         return true;
     }
+    public boolean validarRFC(String RFC, ArrayList<Medico> listaMedicos) {
 
-    public boolean validarTelefonoMedico(String telefono, ArrayList<Medico> listaMedicos) {
         for (Medico medico : listaMedicos) {
-            if (telefono.equals(medico.getTelefono())) {
-                return false;
-            }
+
+            if (medico.getRfc().equals(RFC)) return false;
+
         }
-
-        return true;
-    }
-
-    public boolean validarRFCMedico(String rfc, ArrayList<Medico> listaMedicos) {
-        for (Medico medico : listaMedicos) {
-            if (rfc.equals(medico.getRfc())) {
-                return false;
-            }
-        }
-
         return true;
     }
 }

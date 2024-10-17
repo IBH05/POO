@@ -1,24 +1,48 @@
 package usuarios.medicos;
 
+import java.time.LocalDate;
 import usuarios.Usuario;
 import usuarios.utils.Rol;
 
-import java.time.LocalDate;
+public class Medico extends Usuario {
 
-public class Medico  extends Usuario {
+    public String telefono; 
     private String rfc;
 
-    public Medico(String id, String nombre, String apellidos, LocalDate fechaNacimiento, String telefono, String rfc, String contrasenia) {
-        super(id, nombre, apellidos, fechaNacimiento, telefono, contrasenia, Rol.MEDICO);
+    public Medico(String id, String nombre, String apellidos, LocalDate fechaNacimiento, String telefono, String rfc, String contraseña) {
+        super(id, nombre, apellidos, fechaNacimiento, telefono, contraseña, Rol.MEDICO);
+        this.telefono = telefono;
         this.rfc = rfc;
+    }
+
+    public Medico(String id, String nombre, String apellidos, LocalDate fechaNacimiento, String telefono, String contraseña, Rol rol) {
+        super(id, nombre, apellidos, fechaNacimiento, telefono, contraseña, rol);
+    }
+
+    @Override
+    public String getTelefono() {
+        return telefono;
+    }
+
+    @Override
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getRfc() {
         return rfc;
     }
 
-    public String mostrarMedico() {
-        return String.format("ID: %s  |  Nombre: %s  |  Apellido: %s  |  Fecha Nacimiento: %s  |  Num. Telefono: %s  |  Rfc: %s",
-                getId(), getNombre(), getApellidos(), getFechaNacimiento(), getTelefono(), getRfc());
+    public void setRfc(String rfc) {
+        this.rfc = rfc;
+    }
+
+    public void mostrarMedico() {
+        System.out.println("\nID: " + getId());
+        System.out.println("Nombre: " + getNombre());
+        System.out.println("Apellidos: " + getApellidos());
+        System.out.println("FechaNacimiento: " + getFechaNacimiento());
+        System.out.println("Telefono: " + getTelefono());
+        System.out.println("RFC: " + getRfc());
     }
 }

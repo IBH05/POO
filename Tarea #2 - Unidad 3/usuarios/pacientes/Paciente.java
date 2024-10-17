@@ -1,51 +1,43 @@
 package usuarios.pacientes;
-
+import java.time.LocalDate;
 import usuarios.Usuario;
 import usuarios.utils.Rol;
 
-import java.time.LocalDate;
-
 public class Paciente extends Usuario {
-    public String tipoSangre;
-    public char sexo;
 
-    public Paciente(String id, String nombre, String apellidos, LocalDate fechaNacimiento, String tipoSangre, char sexo, String telefono, String contrasenia) {
-        super(id, nombre, apellidos, fechaNacimiento, telefono, contrasenia, Rol.PACIENTE);
+    public String tipoSangre;
+    public String sexo;
+
+    public Paciente(String id, String nombre, String apellidos, LocalDate fechaNacimiento,
+                    String telefono, String tipoSangre, String sexo, String contraseña) {
+        super(id, nombre, apellidos, fechaNacimiento, telefono, contraseña, Rol.PACIENTE);
         this.tipoSangre = tipoSangre;
         this.sexo = sexo;
-    }
-
-    // Getters
-    public String getId() {
-        return id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
     }
 
     public String getTipoSangre() {
         return tipoSangre;
     }
 
-    public char getSexo() {
+    public void setTipoSangre(String tipoSangre) {
+        this.tipoSangre = tipoSangre;
+    }
+
+    public String getSexo() {
         return sexo;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
-    public String mostrarDatos() {
-        return String.format("Id: %s  |  Nombre: %s  |  Apellidos: %s  |  Fecha de Nacimiento: %s  |  Tipo de Sangre: %s  |  Sexo: %s  |  Telefono: %s",
-                getId(), getNombre(), getApellidos(), getFechaNacimiento(), getTipoSangre(), getSexo(), getTelefono());
+    public void mostrarDatos() {
+        System.out.println("\nID: " + getId());
+        System.out.println("Nombre: " + getNombre());
+        System.out.println("Apellidos: " + getApellidos());
+        System.out.println("FechaNacimiento: " + getFechaNacimiento());
+        System.out.println("Tipo de sangre: " + getTipoSangre());
+        System.out.println("Sexo: " + getSexo());
+        System.out.println("Telefono: " + getTelefono());
     }
 }
