@@ -6,9 +6,8 @@ public class Pelicula {
     private String clasificacion;
     private String sinopsis;
     private int duracion;
-    private String posterPath;  // La ruta del archivo del póster
+    private String posterPath;  
 
-    // Constructor con 7 parámetros
     public Pelicula(String id, String titulo, String genero, String clasificacion, String sinopsis, int duracion, String posterPath) {
         this.id = id;
         this.titulo = titulo;
@@ -19,12 +18,10 @@ public class Pelicula {
         this.posterPath = posterPath;
     }
 
-    // Método para cambiar la ruta del póster
     public void setPosterPath(String posterPath) {
         this.posterPath = posterPath;
     }
 
-    // Método para mostrar el póster (en formato de texto)
     public void mostrarPoster() {
         if (posterPath != null) {
             try {
@@ -41,7 +38,6 @@ public class Pelicula {
         }
     }
 
-    // Getters y setters para los otros campos
     public String getId() {
         return id;
     }
