@@ -8,7 +8,7 @@ public class Cliente {
     private final String apellidos;
     private final String curp;
     private final LocalDate fechaNacimiento;
-    private final String direccion; // Campo no usado
+    private final String direccion;
     private final List<Compra> compras;
 
     public Cliente(String nombre, String apellidos, String curp, LocalDate fechaNacimiento, String direccion) {
@@ -16,26 +16,23 @@ public class Cliente {
         this.apellidos = apellidos;
         this.curp = curp;
         this.fechaNacimiento = fechaNacimiento;
-        this.direccion = direccion; // Se inicializa, pero no se usa
+        this.direccion = direccion;
         this.compras = new ArrayList<>();
     }
 
-    // Obtener la CURP
     public String getCurp() {
         return curp;
     }
 
     public List<Compra> getCompras() {
-        return compras;  // Devolver el historial de compras
+        return compras;  
     }
 
-    // Método que revisa si el cliente cumple años hoy
     public boolean tieneDescuentoCumpleanios() {
         LocalDate hoy = LocalDate.now();
         return hoy.getMonth() == fechaNacimiento.getMonth() && hoy.getDayOfMonth() == fechaNacimiento.getDayOfMonth();
     }
 
-    // Método para obtener la dirección
     public String getDireccion() {
         return direccion;
     }
@@ -48,7 +45,6 @@ public class Cliente {
         return apellidos;
     }
 
-    // Mostrar información del cliente
     public String mostrarInformacion() {
         return "Cliente: " + nombre + " " + apellidos + ", CURP: " + curp + ", Nacimiento: " + fechaNacimiento;
     }
