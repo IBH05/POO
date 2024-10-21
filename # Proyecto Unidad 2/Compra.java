@@ -44,7 +44,6 @@ public class Compra {
         }
     }
 
-    // Getters
     public List<Boleto> getBoletos() {
         return boletos;
     }
