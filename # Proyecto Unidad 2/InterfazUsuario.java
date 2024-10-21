@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class InterfazUsuario {
     private final Cine cine;
-    private final Inventario inventario;  // Inventario disponible
+    private final Inventario inventario;
     private final Scanner scanner;
 
     public InterfazUsuario(Cine cine, Inventario inventario) {
@@ -15,7 +15,7 @@ public class InterfazUsuario {
     }
 
     public void mostrarBanner() {
-        System.out.println("\033[1;36m"); // Color cyan brillante
+        System.out.println("\033[1;36m"); 
 
         System.out.println(" ▄████▄   ██▓ ███▄    █ ▓█████  ██▓███   ▒█████   ██▓     ██▓  ██████ ");
         System.out.println("▒██▀ ▀█  ▓██▒ ██ ▀█   █ ▓█   ▀ ▓██░  ██▒▒██▒  ██▒▓██▒    ▓██▒▒██    ▒ ");
@@ -27,16 +27,15 @@ public class InterfazUsuario {
         System.out.println("░         ▒ ░   ░   ░ ░    ░   ░░       ░ ░ ░ ▒    ░ ░    ▒ ░░  ░  ░  ");
         System.out.println("░ ░       ░           ░    ░  ░             ░ ░      ░  ░ ░        ░  ");
 
-        System.out.println("\033[0m"); // Resetear el color
+        System.out.println("\033[0m"); 
     }
 
-    // Menú principal
     public void mostrarMenuPrincipal() {
         mostrarBanner();
-        mostrarCartelera();  // Mostrar cartelera primero
+        mostrarCartelera();
         
         while (true) {
-            System.out.print("\033[1;32m");  // Texto verde brillante
+            System.out.print("\033[1;32m"); 
             System.out.println("\n===== MENÚ CLIENTE =====");
             System.out.println("1. Comprar boletos");
             System.out.println("2. Comprar productos");
@@ -45,17 +44,17 @@ public class InterfazUsuario {
             System.out.println("5. Ingresar como Administrador");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
-            System.out.print("\033[0m");  // Resetear colores
+            System.out.print("\033[0m"); 
         
             int opcion = scanner.nextInt();
-            scanner.nextLine();  // Consumir el salto de línea
+            scanner.nextLine(); 
         
             switch (opcion) {
-                case 1 -> comprarBoletos();  // Comprar boletos
-                case 2 -> comprarProductos();  // Comprar productos
-                case 3 -> verReservaciones();  // Ver reservaciones
-                case 4 -> verHistorialCompras();  // Ver historial de compras
-                case 5 -> ingresarComoAdmin();  // Mover lógica de administrador a un método separado
+                case 1 -> comprarBoletos();  
+                case 2 -> comprarProductos();  
+                case 3 -> verReservaciones();
+                case 4 -> verHistorialCompras();
+                case 5 -> ingresarComoAdmin();  
                 case 0 -> {
                     System.out.println("Saliendo del sistema. ¡Gracias!");
                     System.exit(0);
@@ -69,14 +68,13 @@ public class InterfazUsuario {
         System.out.print("Ingrese la contraseña de administrador: ");
         String contraseña = scanner.nextLine();
         if (contraseña.equals("admin123")) {
-            mostrarMenuAdmin();  // Mostrar menú de admin si la contraseña es correcta
+            mostrarMenuAdmin();  
         } else {
             System.out.println("Contraseña incorrecta.");
         }
     }
 
     
-    // Menú del administrador con opción de volver
     private void mostrarMenuAdmin() {
         boolean continuar = true;
         while (continuar) {
@@ -95,24 +93,23 @@ public class InterfazUsuario {
         
             System.out.print("Seleccione una opción: ");
             int opcion = scanner.nextInt();
-            scanner.nextLine(); // Consumir salto de línea
+            scanner.nextLine(); 
         
             switch (opcion) {
-                case 1 -> listarPeliculas();  // Listar películas
-                case 2 -> generarReservaAdmin();  // Generar reserva
-                case 3 -> gestionarProductos();  // Gestionar productos
-                case 4 -> verReportesVentas();  // Ver reportes
-                case 5 -> verHistorialCompras();  // Ver historial de compras
-                case 6 -> verReservaciones();  // Ver reservaciones
-                case 7 -> administrarPeliculas();  // Administrar películas
-                case 8 -> configurarPromociones();  // Configurar promociones
-                case 9 -> registrarCliente();  // Registrar usuario
-                case 10 -> verClientes();  // Ver clientes
-                case 0 -> continuar = false;  // Salir al menú de cliente
+                case 1 -> listarPeliculas(); 
+                case 2 -> generarReservaAdmin();  
+                case 3 -> gestionarProductos();  
+                case 4 -> verReportesVentas(); 
+                case 5 -> verHistorialCompras(); 
+                case 6 -> verReservaciones();
+                case 7 -> administrarPeliculas();  
+                case 8 -> configurarPromociones();  
+                case 9 -> registrarCliente(); 
+                case 10 -> verClientes(); 
+                case 0 -> continuar = false;  
                 default -> System.out.println("Opción no válida. Intente nuevamente.");
             }
         }
-        // Al salir del ciclo (continuar = false), volver al menú principal de cliente
         mostrarMenuPrincipal();
     }
 
@@ -123,12 +120,11 @@ public class InterfazUsuario {
     
         if (cliente == null) {
             System.out.println("Cliente no encontrado. Debe registrarlo.");
-            registrarCliente();  // Llama a registrarCliente si no se encuentra
+            registrarCliente(); 
         } else {
-            comprarBoletos();  // Continuar con la compra de boletos
+            comprarBoletos();  
         }
     
-        // Al finalizar la reserva, volver al menú de administrador, no al de cliente
         mostrarMenuAdmin();
     }
    
@@ -145,7 +141,7 @@ public class InterfazUsuario {
 
             System.out.print("Seleccione una opción: ");
             int opcion = scanner.nextInt();
-            scanner.nextLine(); // Consumir salto de línea
+            scanner.nextLine(); 
 
             switch (opcion) {
                 case 1 -> agregarProducto();
@@ -158,7 +154,6 @@ public class InterfazUsuario {
         }
     }
 
-    // Método para agregar un producto
     private void agregarProducto() {
         System.out.print("Nombre del producto: ");
         String nombre = scanner.nextLine();
@@ -166,14 +161,13 @@ public class InterfazUsuario {
         double precio = scanner.nextDouble();
         System.out.print("Cantidad en inventario: ");
         int cantidad = scanner.nextInt();
-        scanner.nextLine(); // Consumir salto de línea
+        scanner.nextLine();
 
         Producto nuevoProducto = new Producto(nombre, precio);
         inventario.agregarProducto(nuevoProducto, cantidad);
         System.out.println("Producto agregado con éxito.");
     }
 
-    // Método para modificar un producto
     private void modificarProducto() {
         System.out.print("Nombre del producto a modificar: ");
         String nombreProducto = scanner.nextLine();
@@ -183,11 +177,11 @@ public class InterfazUsuario {
             System.out.print("Nuevo nombre (dejar en blanco para mantener): ");
             String nuevoNombre = scanner.nextLine();
             if (nuevoNombre.isEmpty()) {
-                nuevoNombre = producto.getNombre(); // Mantener el nombre actual
+                nuevoNombre = producto.getNombre();
             }
             System.out.print("Nuevo precio: ");
             double nuevoPrecio = scanner.nextDouble();
-            scanner.nextLine(); // Consumir salto de línea
+            scanner.nextLine();
 
             inventario.modificarProducto(nombreProducto, nuevoNombre, nuevoPrecio);
             System.out.println("Producto modificado con éxito.");
@@ -196,7 +190,6 @@ public class InterfazUsuario {
         }
     }
 
-    // Método para eliminar un producto
     private void eliminarProducto() {
         System.out.print("Nombre del producto a eliminar: ");
         String nombreProducto = scanner.nextLine();
@@ -241,7 +234,6 @@ public class InterfazUsuario {
     }
   
 
-    // Código corregido en InterfazUsuario.java
     private void listarProductos() {
         inventario.listarProductos();
     }
@@ -249,7 +241,7 @@ public class InterfazUsuario {
     
 
     private void verReportesVentas() {
-        cine.generarInformeVentas();  // Llama al método que genera el informe de ventas en la clase Cine
+        cine.generarInformeVentas();
     }
     
     private void listarPeliculas() {
@@ -261,7 +253,7 @@ public class InterfazUsuario {
         }
     
         for (Pelicula pelicula : cine.getPeliculas()) {
-            System.out.println("ID: " + pelicula.getId());  // Asegúrate de incluir el ID
+            System.out.println("ID: " + pelicula.getId());  
             System.out.println("Título: " + pelicula.getTitulo());
             System.out.println("Género: " + pelicula.getGenero());
             System.out.println("Clasificación: " + pelicula.getClasificacion());
@@ -271,7 +263,6 @@ public class InterfazUsuario {
         }
     }
 
-    // Método para mostrar la cartelera
     private void mostrarCartelera() {
         System.out.println("\n===== CARTELERA DE PELÍCULAS =====");
         
@@ -283,13 +274,11 @@ public class InterfazUsuario {
             System.out.println("Duración: " + pelicula.getDuracion() + " min");
             System.out.println("Sinopsis: " + pelicula.getSinopsis());
             
-            // Mostrar el póster de la película si es necesario
             pelicula.mostrarPoster();  
             System.out.println("----------------------------------------");
         }
     }
 
-// Método para leer y limpiar el input del usuario
     public void comprarBoletos() {
         System.out.print("Ingrese su CURP: ");
         String curp = scanner.nextLine();
@@ -300,18 +289,16 @@ public class InterfazUsuario {
             String respuesta = scanner.nextLine();
 
             if (respuesta.equalsIgnoreCase("Yes")) {
-                // Llamar a registrarCliente() y luego volver a buscar al cliente por su CURP
                 registrarCliente();
-                cliente = cine.buscarCliente(curp);  // Volver a buscar el cliente después del registro
+                cliente = cine.buscarCliente(curp); 
 
-                // Verificar si el cliente se registró correctamente
                 if (cliente == null) {
                     System.out.println("No se pudo registrar el cliente correctamente.");
-                    return;  // Salir del proceso si no se registra correctamente
+                    return;
                 }
             } else {
                 System.out.println("Debe registrarse para comprar boletos.");
-                return;  // Salir del proceso de compra si no desea registrarse
+                return;
             }
         }
 
@@ -325,7 +312,7 @@ public class InterfazUsuario {
         System.out.println("Seleccione el número de la sala: ");
         cine.getSalas().forEach(sala -> System.out.println("Sala " + sala.getNumero()));
         int numSala = scanner.nextInt();
-        scanner.nextLine(); // Consumir el salto de línea
+        scanner.nextLine();
         Sala sala = cine.getSalas().stream().filter(s -> s.getNumero() == numSala).findFirst().orElse(null);
 
         if (sala != null) {
@@ -338,8 +325,7 @@ public class InterfazUsuario {
             while (continuar) {
                 System.out.print("Seleccione el número de asiento (o ingrese 0 para finalizar): ");
                 int numAsiento = scanner.nextInt();
-                scanner.nextLine(); // Consumir el salto de línea
-            
+                scanner.nextLine(); 
                 if (numAsiento == 0) {
                     break;
                 }
@@ -348,8 +334,7 @@ public class InterfazUsuario {
                     Asiento asiento = sala.getAsientos().get(numAsiento - 1);
                     if (asiento.isDisponible()) {
                         asientosSeleccionados.add(asiento);
-                        asiento.setDisponible(false); // Marcar el asiento como ocupado
-                        // Calcular y mostrar el precio del asiento
+                        asiento.setDisponible(false);
                         double precio = asiento.getTipo().equals("VIP") ? 400 : asiento.getTipo().equals("Premium") ? 200 : 100;
                         Promocion promocion = new Promocion();
                         double precioFinal = promocion.aplicarDescuento(cliente, asiento, precio);
@@ -398,11 +383,9 @@ public class InterfazUsuario {
 
 private String leerRespuestaUsuario() {
     System.out.print("Ingrese su respuesta: ");
-    return scanner.nextLine().trim(); // Lee la respuesta y elimina espacios en blanco
+    return scanner.nextLine().trim();
 }
 
-
-// Método para comprar boletos
     private void realizarCompra(Cliente cliente, Pelicula pelicula, Sala sala, List<Asiento> asientosSeleccionados) {
         System.out.println("\nSeleccione el método de pago:");
         System.out.println("1. Tarjeta de Crédito");
@@ -410,7 +393,7 @@ private String leerRespuestaUsuario() {
         System.out.println("3. Efectivo");
 
         int metodoPago = scanner.nextInt();
-        scanner.nextLine(); // Consumir el salto de línea
+        scanner.nextLine();
         String tipoPago;
 
         switch (metodoPago) {
@@ -452,7 +435,6 @@ private String leerRespuestaUsuario() {
         if (compra.confirmarCompra()) {
             System.out.println("\u001B[32mCompra realizada con éxito. ¡Gracias!\u001B[0m");
             cine.registrarCompra(cliente, compra);
-            // Regresar al menú del cliente después de la compra
             mostrarMenuPrincipal();
         } else {
             System.out.println("\u001B[31mError en la compra.\u001B[0m");
@@ -460,7 +442,6 @@ private String leerRespuestaUsuario() {
     }
 
 
-    // Simulación del ingreso de datos de la tarjeta de crédito/débito
     @SuppressWarnings({"CallToPrintStackTrace", "UseSpecificCatch"})
     private boolean procesarPagoConTarjeta() {
         System.out.println("\n===== Ingrese los datos de su tarjeta =====");
@@ -488,17 +469,14 @@ private String leerRespuestaUsuario() {
     
         System.out.println("Procesando pago...");
         try {
-            Thread.sleep(2000); // Simula un tiempo de procesamiento de pago
+            Thread.sleep(2000); 
         } catch (Exception e) {
             e.printStackTrace();
         }
-    
-        // Simula una aprobación del pago siempre
         System.out.println("Pago aprobado. ¡Gracias por su compra!");
         return true;
     }
 
-        // Método para ver reservaciones del cliente
         private void verReservaciones() {
             System.out.print("Ingrese su CURP: ");
             String curp = scanner.nextLine();
@@ -524,7 +502,6 @@ private String leerRespuestaUsuario() {
             }
         }
 
-        // Método para ver historial de compras del cliente
         private void verHistorialCompras() {
             System.out.print("Ingrese su CURP para ver el historial: ");
             String curp = scanner.nextLine();
@@ -560,38 +537,36 @@ private String leerRespuestaUsuario() {
                                        " | Asiento: " + boletos.get(i).getAsiento().getNumero());
                 }
                 int seleccion = scanner.nextInt() - 1;
-                scanner.nextLine(); // Consumir el salto de línea
+                scanner.nextLine(); 
         
                 if (seleccion >= 0 && seleccion < boletos.size()) {
                     Boleto boletoSeleccionado = boletos.get(seleccion);
                     System.out.print("¿Desea cancelar (1) o modificar (2) esta reserva?: ");
                     int opcion = scanner.nextInt();
-                    scanner.nextLine(); // Consumir el salto de línea
+                    scanner.nextLine();
                     switch (opcion) {
                         case 1 -> {
-                            // Cancelar la reserva
                             cine.getSalas().forEach(sala -> sala.getAsientos().forEach(asiento -> {
                                 if (asiento.getBoleto() != null && asiento.getBoleto().equals(boletoSeleccionado)) {
-                                    asiento.setDisponible(true); // Liberar el asiento
+                                    asiento.setDisponible(true); 
                                 }
                             }));
                             System.out.println("Reserva cancelada.");
                         }
                         case 2 -> {
-                            // Modificar la reserva: cambiar el asiento
                             Sala sala = boletoSeleccionado.getSala();
-                            sala.mostrarAsientosDisponibles(); // Mostrar los asientos disponibles en la sala
+                            sala.mostrarAsientosDisponibles(); 
         
                             System.out.print("Seleccione el nuevo número de asiento: ");
                             int nuevoAsientoNumero = scanner.nextInt();
-                            scanner.nextLine(); // Consumir el salto de línea
+                            scanner.nextLine();
         
                             Asiento nuevoAsiento = sala.getAsientos().get(nuevoAsientoNumero - 1);
         
                             if (nuevoAsiento.isDisponible()) {
-                                nuevoAsiento.asignarBoleto(boletoSeleccionado);  // Asignar el nuevo boleto al asiento
-                                boletoSeleccionado.getAsiento().setDisponible(true);  // Liberar el asiento anterior
-                                boletoSeleccionado.setAsiento(nuevoAsiento);  // Actualizar el boleto con el nuevo asiento
+                                nuevoAsiento.asignarBoleto(boletoSeleccionado);
+                                boletoSeleccionado.getAsiento().setDisponible(true);  
+                                boletoSeleccionado.setAsiento(nuevoAsiento);
                                 System.out.println("Reserva modificada con éxito.");
                             } else {
                                 System.out.println("El asiento seleccionado no está disponible.");
@@ -608,7 +583,6 @@ private String leerRespuestaUsuario() {
         }
        
 
-    // Método para registrar un cliente
     private void registrarCliente() {
         System.out.println("\n--- Registro de Cliente ---");
         System.out.print("Nombre: ");
@@ -627,13 +601,9 @@ private String leerRespuestaUsuario() {
     
         System.out.println("Cliente registrado exitosamente.");
     
-        // En lugar de volver al menú de admin, continuar con el proceso de compra
-        comprarBoletos();  // Volver a la compra de boletos en lugar de ir al menú admin
+        comprarBoletos();
     }
 
-    // Métodos adicionales para la administración (películas, clientes, promociones)
-
-    // Método para administrar películas
     private void administrarPeliculas() {
         System.out.println("1. Agregar Película");
         System.out.println("2. Modificar Película");
@@ -641,7 +611,7 @@ private String leerRespuestaUsuario() {
         System.out.print("Seleccione una opción: ");
 
         int opcion = scanner.nextInt();
-        scanner.nextLine(); // Consumir salto de línea
+        scanner.nextLine();
         switch (opcion) {
             case 1 -> agregarPelicula();
             case 2 -> modificarPelicula();
@@ -650,8 +620,6 @@ private String leerRespuestaUsuario() {
         }
     }
 
-    // Método para agregar una película
-    // Método para agregar una película
     private void agregarPelicula() {
         System.out.println("\n--- Agregar Película ---");
         System.out.print("Título: ");
@@ -661,21 +629,19 @@ private String leerRespuestaUsuario() {
         System.out.print("Clasificación: ");
         String clasificacion = scanner.nextLine();
         System.out.print("Duración (min): ");
-        int duracion = scanner.nextInt();  // Aquí se define duracion
-        scanner.nextLine(); // Consumir salto de línea
+        int duracion = scanner.nextInt(); 
+        scanner.nextLine();
         System.out.print("Sinopsis: ");
         String sinopsis = scanner.nextLine();
         System.out.print("Ruta del archivo del póster (.txt): ");
         String posterPath = scanner.nextLine();
     
-        // Aquí se usa duracion al crear la película
         Pelicula nuevaPelicula = new Pelicula(String.valueOf(cine.getCatalogo().size() + 1), titulo, genero, clasificacion, sinopsis, duracion, posterPath);
         cine.agregarPelicula(nuevaPelicula.getId(), nuevaPelicula);
         System.out.println("Película agregada exitosamente.");
     }
     
-    // Método para modificar una película
-    private void modificarPelicula() {
+      private void modificarPelicula() {
         System.out.print("Ingrese el ID de la película a modificar: ");
         String idPelicula = scanner.nextLine();
         Pelicula pelicula = cine.buscarPelicula(idPelicula);
@@ -698,9 +664,9 @@ private String leerRespuestaUsuario() {
             if (!sinopsis.isEmpty()) pelicula.setSinopsis(sinopsis);
     
             System.out.print("Ingrese la nueva duración (en minutos, o presione Enter para dejar sin cambios): ");
-            int duracion = scanner.nextInt();  // Aquí se define duracion
-            scanner.nextLine(); // Consumir salto de línea
-            if (duracion > 0) pelicula.setDuracion(duracion);  // Se usa la duracion para actualizar la película
+            int duracion = scanner.nextInt(); 
+            scanner.nextLine();
+            if (duracion > 0) pelicula.setDuracion(duracion); 
     
             System.out.print("Ingrese la nueva ruta del póster (.txt): ");
             String posterPath = scanner.nextLine();
@@ -712,7 +678,6 @@ private String leerRespuestaUsuario() {
         }
     }
 
-    // Método para eliminar una película
     private void eliminarPelicula() {
         System.out.print("Ingrese el ID de la película a eliminar: ");
         String idPelicula = scanner.nextLine();
@@ -726,7 +691,6 @@ private String leerRespuestaUsuario() {
         }
     }
 
-    // Método para configurar promociones
     private void configurarPromociones() {
         System.out.println("\nConfiguración de Promociones:");
         System.out.println("1. Activar/Desactivar promoción de cumpleaños");
@@ -734,11 +698,10 @@ private String leerRespuestaUsuario() {
         System.out.print("Seleccione una opción: ");
 
         int opcion = scanner.nextInt();
-        scanner.nextLine(); // Consumir salto de línea
+        scanner.nextLine();
 
         switch (opcion) {
             case 1 -> {
-                // Simular la activación/desactivación de la promoción de cumpleaños
                 System.out.println("Promoción de cumpleaños activada/desactivada.");
             }
             case 2 -> {
@@ -752,7 +715,6 @@ private String leerRespuestaUsuario() {
         }
     }
 
-    // Método para ver clientes registrados
     private void verClientes() {
         System.out.println("\n--- Lista de Clientes Registrados ---");
         cine.getClientes().forEach(cliente -> System.out.println(cliente.mostrarInformacion()));
