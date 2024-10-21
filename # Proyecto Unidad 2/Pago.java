@@ -1,12 +1,10 @@
 public class Pago {
     private String metodoPago;
 
-    // Constructor
     public Pago(String metodoPago) {
         this.metodoPago = metodoPago;
     }
 
-    // Método para validar el tipo de pago
     public boolean validarMetodoPago() {
         if (metodoPago.equalsIgnoreCase("Tarjeta de crédito") || 
             metodoPago.equalsIgnoreCase("Tarjeta de débito") || 
@@ -18,10 +16,8 @@ public class Pago {
         }
     }
 
-    // Método para procesar el pago (simulación)
     public boolean procesarPago(double monto) {
         if (validarMetodoPago()) {
-            // Simular la aprobación del pago
             System.out.println("Procesando pago de $" + monto + " usando " + metodoPago + "...");
             System.out.println("Pago aprobado.");
             return true;
@@ -31,7 +27,6 @@ public class Pago {
         }
     }
 
-    // Getters y setters
     public String getMetodoPago() {
         return metodoPago;
     }
