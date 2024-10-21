@@ -6,27 +6,24 @@ public class Cine {
     private final List<Sala> salas;
     private final Map<String, Pelicula> catalogo;
     private final List<Cliente> clientes;
-    private final List<Compra> compras;  // Lista para almacenar el historial de compras
+    private final List<Compra> compras; 
 
     public Cine(List<Sala> salas, Map<String, Pelicula> catalogo) {
         this.salas = salas;
         this.catalogo = catalogo;
         this.clientes = new ArrayList<>();
-        this.compras = new ArrayList<>();  // Inicializar historial de compras
+        this.compras = new ArrayList<>();
     }
 
     public void registrarCompra(Cliente cliente, Compra compra) {
-        // Verificar si el cliente ya está registrado
         if (clientes.contains(cliente)) {
-            cliente.getCompras().add(compra);  // Agregar la compra al historial del cliente
+            cliente.getCompras().add(compra);
             System.out.println("Compra registrada exitosamente para el cliente: " + cliente.getNombre());
         } else {
             System.out.println("Cliente no encontrado. No se pudo registrar la compra.");
         }
     }
 
-
-    // Método para agregar una película al catálogo
     public void agregarPelicula(String clave, Pelicula pelicula) {
         catalogo.put(clave, pelicula);
     }
@@ -43,22 +40,19 @@ public class Cine {
         return clientes;
     }
 
-        // Método para buscar un cliente por CURP
     public Cliente buscarCliente(String curp) {
         for (Cliente cliente : clientes) {
             if (cliente.getCurp().equalsIgnoreCase(curp)) {
                 return cliente;
             }
         }
-        return null;  // Retornar null si no se encuentra el cliente
+        return null;
     }
 
-    // Método para buscar una película por ID
     public Pelicula buscarPelicula(String id) {
-        return catalogo.get(id); // Suponiendo que catalogo es un Map
+        return catalogo.get(id);
     }
 
-    // Método para obtener boletos de un cliente
     public List<Boleto> obtenerBoletosPorCliente(Cliente cliente) {
         List<Boleto> boletosCliente = new ArrayList<>();
         for (Sala sala : salas) {
@@ -79,12 +73,10 @@ public class Cine {
                 }
             }
         }
-        return null; // Si no encuentra la sala
+        return null;
     }
     
-
-    // Método para obtener historial de compras de un cliente
-    public List<Compra> obtenerComprasPorCliente(Cliente cliente) {
+   public List<Compra> obtenerComprasPorCliente(Cliente cliente) {
         List<Compra> comprasCliente = new ArrayList<>();
         for (Compra compra : compras) {
             if (compra.getBoletos().get(0).getCliente().equals(cliente)) {
@@ -95,10 +87,9 @@ public class Cine {
     }
 
     public List<Pelicula> getPeliculas() {
-        return new ArrayList<>(catalogo.values()); // Suponiendo que las películas están almacenadas en un Map llamado 'catalogo'
+        return new ArrayList<>(catalogo.values());
     }
 
-    // Método para generar un informe detallado de ventas
     public void generarInformeVentas() {
         System.out.println("\n===== INFORME DE VENTAS =====");
         for (Sala sala : salas) {
