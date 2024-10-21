@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Sala {
     private final int numero;
-    private final int capacidad; // Capacidad de la sala
+    private final int capacidad;
     private final List<Asiento> asientos;
-    private Pelicula pelicula; // Película asignada a la sala
+    private Pelicula pelicula;
     private LocalDateTime horario;
 
     public Sala(int numero, int capacidad, int vip, int premium) {
@@ -25,7 +25,6 @@ public class Sala {
         }
     }
 
-    // Método para asignar una película con su horario a la sala
     public void asignarPelicula(Pelicula pelicula, LocalDateTime horario) {
         this.pelicula = pelicula;
         this.horario = horario;
@@ -52,7 +51,6 @@ public class Sala {
         return numero;
     }
 
-    // Mostrar asientos disponibles
     public void mostrarAsientosDisponibles() {
         System.out.println("Asientos disponibles en la Sala " + numero + ":");
         for (Asiento asiento : asientos) {
@@ -62,7 +60,6 @@ public class Sala {
         }
     }
 
-    // Método para contar boletos vendidos por tipo (VIP, Premium, Normal)
     public int contarBoletosPorTipo(String tipo) {
         int count = 0;
         for (Asiento asiento : asientos) {
@@ -73,7 +70,6 @@ public class Sala {
         return count;
     }
 
-    // Método para calcular ingresos de la sala
     public double calcularIngresos() {
         double total = 0.0;
         for (Asiento asiento : asientos) {
@@ -84,12 +80,10 @@ public class Sala {
         return total;
     }
 
-    // Método para verificar si un asiento está disponible
     public boolean verificarDisponibilidad(int numeroAsiento) {
         return asientos.get(numeroAsiento - 1).isDisponible();
     }
 
-    // Método para reservar un asiento
     public void reservarAsiento(int numeroAsiento) {
         asientos.get(numeroAsiento - 1).reservar();
     }
