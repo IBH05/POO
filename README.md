@@ -79,7 +79,7 @@ El sistema debe validar la disponibilidad de asientos en tiempo real y permitir 
 1. Clona este repositorio:
     ```bash
     git clone https://github.com/tu-usuario/cinepolis.git
-    cd cinepolis
+    cd proyecto/unidad2
     ```
 
 2. Compila y ejecuta el proyecto:
