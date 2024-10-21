@@ -1,18 +1,15 @@
 public class Ticket {
     private final Compra compra;
 
-    // Constructor
     public Ticket(Compra compra) {
         this.compra = compra;
     }
 
-    // Generar ticket
     public void generarTicket() {
         System.out.println("===== TICKET DE COMPRA =====");
         System.out.println("Fecha de compra: " + compra.getFechaCompra());
         System.out.println("Método de pago: " + compra.getPago().getMetodoPago());
 
-        // Mostrar boletos
         System.out.println("\n=== Boletos ===");
         for (Boleto boleto : compra.getBoletos()) {
             System.out.println("Película: " + boleto.getPelicula().getTitulo());
@@ -23,7 +20,6 @@ public class Ticket {
             System.out.println("----------------------------");
         }
 
-        // Mostrar productos adicionales
         System.out.println("\n=== Productos Adicionales ===");
         for (Producto producto : compra.getProductos()) {
             System.out.println("Producto: " + producto.getNombre());
@@ -31,7 +27,6 @@ public class Ticket {
             System.out.println("----------------------------");
         }
 
-        // Total pagado
         System.out.println("\nTotal pagado: $" + compra.getPrecioTotal());
         System.out.println("==============================");
     }
