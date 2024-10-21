@@ -8,22 +8,20 @@ public class Inventario {
         this.stockProductos = new HashMap<>();
     }
 
-    // Método para buscar un producto por nombre
     public Producto buscarProductoPorNombre(String nombreProducto) {
         for (Producto producto : stockProductos.keySet()) {
             if (producto.getNombre().equalsIgnoreCase(nombreProducto)) {
                 return producto;
             }
         }
-        return null;  // Si no encuentra el producto
+        return null;
     }
 
-    // Método para reducir el stock de un producto
     public boolean reducirStock(Producto producto, int cantidad) {
         if (stockProductos.containsKey(producto)) {
             int stockActual = stockProductos.get(producto);
             if (stockActual >= cantidad) {
-                stockProductos.put(producto, stockActual - cantidad);  // Reducir stock
+                stockProductos.put(producto, stockActual - cantidad); 
                 return true;
             } else {
                 System.out.println("Stock insuficiente para el producto: " + producto.getNombre());
@@ -31,15 +29,12 @@ public class Inventario {
         } else {
             System.out.println("Producto no encontrado en el inventario.");
         }
-        return false;  // Si no se pudo reducir el stock
+        return false;  
     }
 
-    // Método para agregar un producto al inventario
     public void agregarProducto(Producto producto, int cantidad) {
         stockProductos.put(producto, cantidad);
     }
-
-    // Método para modificar un producto (nombre o precio)
     public boolean modificarProducto(String nombreProducto, String nuevoNombre, double nuevoPrecio) {
         Producto producto = buscarProductoPorNombre(nombreProducto);
         if (producto != null) {
@@ -50,7 +45,6 @@ public class Inventario {
         return false;
     }
 
-    // Método para eliminar un producto del inventario
     public boolean eliminarProducto(String nombreProducto) {
         Producto producto = buscarProductoPorNombre(nombreProducto);
         if (producto != null) {
@@ -73,7 +67,6 @@ public class Inventario {
         }
     }
 
-    // Método para mostrar el inventario
     public void mostrarInventario() {
         if (stockProductos.isEmpty()) {
             System.out.println("No hay productos en el inventario.");
