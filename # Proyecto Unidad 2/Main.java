@@ -20,7 +20,7 @@ public class Main {
         Sala sala2 = new Sala(2, 50, 15, 10); 
 
         Pelicula pelicula1 = new Pelicula("1", "Inception", "Ciencia Ficción", "PG-13", "Un ladrón que roba secretos a través de los sueños...", 148, "C:\\Users\\PC\\Downloads\\# Proyecto Unidad 2\\Inception.txt");
-        Pelicula pelicula2 = new Pelicula("2", "Matrix", "Acción", "R", "Una historia de un mundo simulado...", 136, "C:\\Users\\PC\\Downloads\\# Proyecto Unidad 2\\Matrix.txt");  // Pasa 'null' si no tienes póster
+        Pelicula pelicula2 = new Pelicula("2", "Matrix", "Acción", "R", "Una historia de un mundo simulado...", 136, "C:\\Users\\PC\\Downloads\\# Proyecto Unidad 2\\Matrix.txt");
 
         sala1.asignarPelicula(pelicula1, LocalDateTime.now().plusHours(1)); 
         sala2.asignarPelicula(pelicula2, LocalDateTime.now().plusHours(3));  
