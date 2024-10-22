@@ -78,14 +78,13 @@ El sistema debe validar la disponibilidad de asientos en tiempo real y permitir 
 
 1. Clona este repositorio:
     ```bash
-    git clone https://github.com/tu-usuario/cinepolis.git
+    [git clone https://github.com/IBH05/cinepolis.git](https://github.com/IBH05/POO.git)
     cd proyecto/unidad2
     ```
 
 2. Compila y ejecuta el proyecto:
     ```bash
-    javac -d bin src/Main.java
-    java -cp bin main.Main
+    java Main.java
     ```
 
 **Contribuciones**: 
